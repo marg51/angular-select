@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="mgApp" ng-controller="demoCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>mg select</title>
+    <style type='text/css'>
+      body {
+        background: #F1F1F1;
+      }
+      span[ng-repeat] {
+        border: 1px solid #CCC;
+        background: white;
+        margin-right: 3px;
+        font-size: 20px;
+        padding: 2px;
+      }
+      span.selected {
+        border-color: #787;
+      }
+      textarea {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>Click on the text where you want to edit it</h3>
+      <span ng-repeat='text in data' ng-click='setCurrent($index)' ng-class='{selected:$index==current}'>{{text}}</span>
+    </div>
+
+    <div>
+      <h3>Editing #{{current+1}}</h3>
+      <textarea ng-model='data[current]' demo-textarea rows='3'></textarea><br />
+      start : <input ng-model='form.start' type='number'/><br />
+      end : <input ng-model='form.end' type='number'/><br />
+      <button ng-click='update()'>Apply selection</button>
+      
+    </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="dist/service.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>
